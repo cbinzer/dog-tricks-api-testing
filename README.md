@@ -1,14 +1,13 @@
-# Dog Tricks API 🐕 - Error Handling
+# Dog Tricks API 🐕 - Testing
 
-This repository contains the example code for the blog post [Error Handling in Rust and Axum](https://cbinzer.de/blog/rust-axum-error-handling).
-It builds on the Dog Tricks API introduced in the [previous article](https://cbinzer.de/blog/rest-api-axum).
+This repository contains the example code for the blog post [Testing in Rust and Axum](https://cbinzer.de/blog/rust-axum-testing).
+It builds on the Dog Tricks API from the [previous article](https://cbinzer.de/blog/rust-axum-error-handling).
 
 ## Features
 
-- A service layer between handlers and repositories
-- Validation logic for create and replace operations
-- A custom TrickError enum with NotFound and Validation variants
-- Conversion of domain errors into consistent JSON API error responses via IntoResponse
+- Unit tests for the service layer
+- Integration tests for HTTP routes
+- Exporting the Axum router through lib.rs
 
 ## Getting Started
 
@@ -21,3 +20,10 @@ It builds on the Dog Tricks API introduced in the [previous article](https://cbi
 
 ```bash
 cargo run
+```
+
+### Run the tests
+
+```bash
+cargo test
+```
