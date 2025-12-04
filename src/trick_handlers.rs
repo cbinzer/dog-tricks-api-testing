@@ -2,15 +2,16 @@ use crate::trick_models::{Trick, TrickCreateInput, TrickError, TrickReplaceInput
 use crate::trick_service::TrickService;
 use axum::Json;
 use axum::extract::{Path, State};
+use axum::http::StatusCode;
 use std::sync::Arc;
 use uuid::Uuid;
 
 pub async fn create_trick(
     State(repo): State<Arc<TrickService>>,
     Json(input): Json<TrickCreateInput>,
-) -> Result<Json<Trick>, TrickError> {
+) -> Result<(StatusCode, Json<Trick>), TrickError> {
     let new_trick = repo.create(input).await?;
-    Ok(Json(new_trick))
+    Ok((StatusCode::CREATED, Json(new_trick)))
 }
 
 pub async fn find_tricks(State(repo): State<Arc<TrickService>>) -> Json<Vec<Trick>> {

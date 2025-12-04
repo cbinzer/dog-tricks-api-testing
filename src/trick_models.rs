@@ -71,8 +71,8 @@ impl IntoResponse for TrickError {
     }
 }
 
-#[derive(Serialize)]
-struct ApiError {
-    status_code: u16,
-    message: String,
+#[derive(Serialize, Deserialize)]
+pub struct ApiError {
+    pub status_code: u16,
+    pub message: String,
 }
