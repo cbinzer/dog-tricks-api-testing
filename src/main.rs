@@ -5,9 +5,9 @@ use crate::trick_repository::TrickRepository;
 use axum::routing::get;
 use axum::{Router, serve};
 
+use crate::trick_service::TrickService;
 use std::sync::Arc;
 use tokio::net::TcpListener;
-use crate::trick_service::TrickService;
 
 mod trick_handlers;
 mod trick_models;
@@ -16,7 +16,7 @@ mod trick_service;
 
 #[tokio::main]
 async fn main() {
-    let service = Arc::new(TrickService::new(TrickRepository::new()));
+    let service = Arc::new(TrickService::new(Arc::new(TrickRepository::new())));
     let router = Router::new()
         .route("/tricks", get(find_tricks).post(create_trick))
         .route(

@@ -1,10 +1,10 @@
+use axum::Json;
 use axum::http::StatusCode;
 use axum::response::{IntoResponse, Response};
 use serde::{Deserialize, Serialize};
 use std::error::Error;
 use std::fmt;
 use std::fmt::Display;
-use axum::Json;
 use uuid::Uuid;
 
 #[derive(Serialize, Deserialize, Clone)]
